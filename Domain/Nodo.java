@@ -11,4 +11,41 @@ package Domain;
  */
 public class Nodo {
     
+    private Palabra palabra;
+    private Nodo izq, der;
+
+    public Nodo(Palabra palabra, Nodo izq, Nodo der) {
+        this.palabra = palabra;
+        this.izq = izq;
+        this.der = der;
+    }
+
+    public Nodo(Palabra palabra) {
+        this.palabra = palabra;
+    }
+
+
+    public Palabra getPalabra() {
+        return palabra;
+    }
+
+    public void setPalabra(Palabra palabra) {
+        this.palabra = palabra;
+    }
+
+    public Nodo getIzq() {
+        return izq;
+    }
+
+    public void setIzq(Nodo izq) {
+        this.izq = izq;
+    }
+
+    public Nodo getDer() {
+        return der;
+    }
+
+    public void setDer(Nodo der) {
+        this.der = der;
+    }
 }

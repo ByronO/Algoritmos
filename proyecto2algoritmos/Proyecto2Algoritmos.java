@@ -5,6 +5,11 @@
  */
 package proyecto2algoritmos;
 
+import Data.PalabraData;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author byron
@@ -15,8 +20,13 @@ public class Proyecto2Algoritmos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-       
+        try {
+            // TODO code application logic here
+            PalabraData palabraData = new PalabraData();
+            palabraData.leerTexto("texto.txt");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Proyecto2Algoritmos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

@@ -5,6 +5,8 @@
  */
 package Domain;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author byron
@@ -13,15 +15,19 @@ public class Palabra {
     
     private String palabra;
     private int cantidad, ascii;
-    private int []psiciones;
+    private ArrayList<Integer> posiciones;
 
-    public Palabra(String palabra, int cantidad, int ascii, int[] psiciones) {
+    public Palabra(String palabra, int cantidad, int ascii, ArrayList<Integer> posiciones) {
         this.palabra = palabra;
         this.cantidad = cantidad;
         this.ascii = ascii;
-        this.psiciones = psiciones;
+        this.posiciones = posiciones;
     }
 
+    public Palabra(String palabra) {
+        this.palabra = palabra;
+    }
+    
     public String getPalabra() {
         return palabra;
     }
@@ -47,19 +53,20 @@ public class Palabra {
         this.ascii = ascii;
     }
 
-    public int[] getPsiciones() {
-        return psiciones;
+    public ArrayList<Integer> getPosiciones() {
+        return posiciones;
     }
 
-    public void setPsiciones(int[] psiciones) {
-        this.psiciones = psiciones;
+    public void setPosiciones(ArrayList<Integer> posiciones) {
+        this.posiciones = posiciones;
     }
 
     @Override
     public String toString() {
-        return "Palabra{" + "palabra=" + palabra + ", cantidad=" + cantidad + ", ascii=" + ascii + ", psiciones=" + psiciones + '}';
+        return "Palabra{" + "palabra=" + palabra + ", cantidad=" + cantidad + ", ascii=" + ascii + ", posiciones=" + posiciones + '}';
     }
-    
+
+   
     
     
 }
