@@ -24,6 +24,7 @@ public class Proyecto2Algoritmos {
             // TODO code application logic here
             PalabraData palabraData = new PalabraData();
             palabraData.leerTexto("texto.txt");
+            palabraData.guardarArbol();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Proyecto2Algoritmos.class.getName()).log(Level.SEVERE, null, ex);
         }

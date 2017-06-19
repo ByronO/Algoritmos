@@ -6,12 +6,15 @@
 package Data;
 
 import Domain.Arbol;
+import Domain.Nodo;
 import Domain.Palabra;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,11 +26,11 @@ import java.util.logging.Logger;
 public class PalabraData {
 
     private String path;
+    private ArrayList<Palabra> todasLasPalabras = new ArrayList<Palabra>();
+    private Arbol arbol = new Arbol();
 
     public void leerTexto(String path) throws FileNotFoundException {
         this.path = path;
-        Arbol arbol = new Arbol();
-        ArrayList<Palabra> todasLasPalabras = new ArrayList<Palabra>();
 
         try {
             File archivo = new File(this.path);
@@ -42,26 +45,24 @@ public class PalabraData {
 
                 for (int i = 0; i < a.length; i++) {
                     palabra = new Palabra(a[i]);
-                    todasLasPalabras.add(palabra);
+                    this.todasLasPalabras.add(palabra);
                 }
             }
 
             ArrayList<Palabra> palabras = new ArrayList<Palabra>();
-            ArrayList<Integer> posiciones = new ArrayList<Integer>();
 
-            for (int i = 0; i < todasLasPalabras.size(); i++) {
-                int cantidad = 0;
-                String p = todasLasPalabras.get(i).getPalabra();
+            for (int i = 0; i < this.todasLasPalabras.size(); i++) {
 
-                for (int j = 0; j < todasLasPalabras.size(); j++) {
-                        if (p.equalsIgnoreCase(todasLasPalabras.get(j).getPalabra())) {
-                        cantidad++;
+                String p = this.todasLasPalabras.get(i).getPalabra();
+                ArrayList<Integer> posiciones = new ArrayList<Integer>();
+                for (int j = 0; j < this.todasLasPalabras.size(); j++) {
+                    if (p.equalsIgnoreCase(this.todasLasPalabras.get(j).getPalabra())) {
+
                         posiciones.add(j);
-//                        System.out.println(p+cantidad);
                     }
                     char[] c = p.toCharArray();
                     int ascii = c[0];
-                    Palabra palabra = new Palabra(p, cantidad, ascii, posiciones);
+                    Palabra palabra = new Palabra(p, ascii, posiciones);
                     boolean existe = false;
                     for (int x = 0; x < palabras.size(); x++) {
                         if (palabra.getPalabra().equalsIgnoreCase(palabras.get(x).getPalabra())) {
@@ -73,16 +74,29 @@ public class PalabraData {
                         palabras.add(palabra);
                     }
                 }
-                posiciones.removeAll(posiciones);
             }
 
             for (int i = 0; i < palabras.size(); i++) {
                 arbol.agregar(palabras.get(i));
             }
             arbol.printTree1();
+            fr.close();
         } catch (IOException ex) {
             Logger.getLogger(PalabraData.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    public void guardarArbol() throws FileNotFoundException {
+
+        File file = new File("Arbol.txt");
+        PrintWriter pw = new PrintWriter(file);
+
+        ArrayList<Nodo> nodos = arbol.recorrerArbol1();
+        for (int i = 0; i < nodos.size(); i++) {
+//            System.out.println(nodos.get(i).getPalabra().toString());
+            pw.println(nodos.get(i).getPalabra().toString());
+        }
+        pw.close();
     }
 }
