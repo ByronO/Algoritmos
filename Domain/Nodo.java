@@ -24,6 +24,10 @@ public class Nodo {
         this.palabra = palabra;
     }
 
+    public Nodo() {
+    }
+
+    
 
     public Palabra getPalabra() {
         return palabra;

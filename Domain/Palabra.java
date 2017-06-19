@@ -14,12 +14,11 @@ import java.util.ArrayList;
 public class Palabra {
     
     private String palabra;
-    private int cantidad, ascii;
+    private int ascii;
     private ArrayList<Integer> posiciones;
 
-    public Palabra(String palabra, int cantidad, int ascii, ArrayList<Integer> posiciones) {
+    public Palabra(String palabra, int ascii, ArrayList<Integer> posiciones) {
         this.palabra = palabra;
-        this.cantidad = cantidad;
         this.ascii = ascii;
         this.posiciones = posiciones;
     }
@@ -35,14 +34,6 @@ public class Palabra {
     public void setPalabra(String palabra) {
         this.palabra = palabra;
         
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
     }
 
     public int getAscii() {
@@ -63,7 +54,7 @@ public class Palabra {
 
     @Override
     public String toString() {
-        return "Palabra{" + "palabra=" + palabra + ", cantidad=" + cantidad + ", ascii=" + ascii + ", posiciones=" + posiciones + '}';
+        return "Palabra{" + "palabra=" + palabra + ", ascii=" + ascii + ", posiciones=" + posiciones + '}';
     }
     
 }
