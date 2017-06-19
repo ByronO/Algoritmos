@@ -54,7 +54,7 @@ public class Palabra {
 
     @Override
     public String toString() {
-        return "Palabra{" + "palabra=" + palabra + ", ascii=" + ascii + ", posiciones=" + posiciones + '}';
+        return palabra  +"-"+ posiciones ;
     }
     
 }
