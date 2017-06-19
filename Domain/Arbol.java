@@ -58,6 +58,7 @@ public class Arbol {
             System.out.println(temp.getPalabra().toString());
             printTree(temp.getIzq());
             printTree(temp.getDer());
+            
         }
     }
 }

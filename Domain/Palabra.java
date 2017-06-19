@@ -65,8 +65,5 @@ public class Palabra {
     public String toString() {
         return "Palabra{" + "palabra=" + palabra + ", cantidad=" + cantidad + ", ascii=" + ascii + ", posiciones=" + posiciones + '}';
     }
-
-   
-    
     
 }
