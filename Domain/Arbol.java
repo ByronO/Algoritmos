@@ -15,11 +15,6 @@ public class Arbol {
 
     private Nodo raiz;
     private ArrayList<Palabra> palabras= new ArrayList<>();
-<<<<<<< HEAD
-=======
-            
-            
->>>>>>> ddf279d3affa052fe712813cc7d56b38f6b6200e
 
     public Arbol() {
         this.raiz = null;
@@ -93,14 +88,11 @@ public class Arbol {
 
         return this.palabras;
 
-<<<<<<< HEAD
-}
-=======
     }
->>>>>>> ddf279d3affa052fe712813cc7d56b38f6b6200e
-
+    
     public Nodo getRaiz() {
         return raiz;
     }
 
 }
+
