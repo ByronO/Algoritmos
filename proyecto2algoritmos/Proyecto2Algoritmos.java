@@ -5,11 +5,7 @@
  */
 package proyecto2algoritmos;
 
-import Data.PalabraData;
 import GUI.VentanaPrincipal;
-import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Proyecto2Algoritmos {
 
@@ -17,16 +13,12 @@ public class Proyecto2Algoritmos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
+       
             VentanaPrincipal a= new VentanaPrincipal();
             a.setVisible(true);
             // TODO code application logic here
-            PalabraData palabraData = new PalabraData();
-            palabraData.leerTexto("texto.txt");
-            palabraData.guardarArbol();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Proyecto2Algoritmos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            
+        
     }
 
 }

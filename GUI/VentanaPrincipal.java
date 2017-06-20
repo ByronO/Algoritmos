@@ -5,9 +5,13 @@
  */
 package GUI;
 
+import Data.PalabraData;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -26,6 +30,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private JMenu jMenu;
     private JMenuItem jmiDeTextoAArbol, jmiDeArbolATexto, jmiArchivo;
     private JFileChooser fileChooser;
+    
+    private String path;
 
     public VentanaPrincipal() {
         super();
@@ -70,6 +76,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
             File file = this.fileChooser.getSelectedFile();
             if (file != null) {
                 if (file.getPath().toLowerCase().indexOf(".txt") != -1) {
+                    this.path = file.getPath();
                     JOptionPane.showMessageDialog(null, "Archivo cargado");
                     this.jmiDeTextoAArbol.setVisible(true);
                     this.jmiDeArbolATexto.setVisible(true);
@@ -88,8 +95,15 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
             g.setVisible(true);
         }
         if (e.getSource() == this.jmiDeTextoAArbol) {
-            Grafico g = new Grafico();
-            g.setVisible(true);
+            try {
+                Grafico g = new Grafico();
+                g.setVisible(true);
+                PalabraData palabraData = new PalabraData();
+                palabraData.leerTexto(this.path);
+                palabraData.guardarArbol();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//actionPerformed
 

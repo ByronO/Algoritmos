@@ -87,6 +87,7 @@ public class Arbol {
         }
 
         return this.palabras;
+
     }
         
     public Nodo getRaiz() {
@@ -94,3 +95,4 @@ public class Arbol {
     }
 
 }
+
