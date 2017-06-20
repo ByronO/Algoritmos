@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Arbol {
 
     private Nodo raiz;
+    private ArrayList<Palabra> palabras= new ArrayList<>();
 
     public Arbol() {
         this.raiz = null;
@@ -63,23 +64,31 @@ public class Arbol {
         }
     }
 
-    public ArrayList<Nodo> recorrerArbol1() {
+    public ArrayList<Palabra> recorrerArbol1() {
         Nodo temp = this.raiz;
-        ArrayList<Nodo> nodos = recorrerArbol(temp);
+        recorrerArbol(temp);
+       
+        for (int i = 0; i < palabras.size(); i++) {
+            System.out.println(palabras.get(i).toString());
 
-        return nodos;
+        }
+        return palabras;
     }
 
-    public ArrayList<Nodo> recorrerArbol(Nodo temp) {
+    public ArrayList<Palabra> recorrerArbol(Nodo temp) {
 
-        ArrayList<Nodo> nodos = new ArrayList<Nodo>();
+//        ArrayList<Palabra> palabras = new ArrayList<Palabra>();
         if (temp != null) {
-            nodos.add(temp);
+//            System.out.println(temp.getPalabra().toString());
+
+            palabras.add(temp.getPalabra());
             recorrerArbol(temp.getIzq());
             recorrerArbol(temp.getDer());
         }
-        return nodos;
-    }
+
+        return this.palabras;
+
+}
 
     public Nodo getRaiz() {
         return raiz;

@@ -92,10 +92,9 @@ public class PalabraData {
         File file = new File("Arbol.txt");
         PrintWriter pw = new PrintWriter(file);
 
-        ArrayList<Nodo> nodos = arbol.recorrerArbol1();
-        for (int i = 0; i < nodos.size(); i++) {
-//            System.out.println(nodos.get(i).getPalabra().toString());
-            pw.println(nodos.get(i).getPalabra().toString());
+        ArrayList<Palabra> palabras = arbol.recorrerArbol1();
+        for (int i = 0; i < palabras.size(); i++) {
+            pw.println(palabras.get(i).toString());
         }
         pw.close();
     }
