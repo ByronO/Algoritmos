@@ -93,7 +93,7 @@ public class PalabraData {
         PrintWriter pw = new PrintWriter(file);
 
         ArrayList<Palabra> palabras = arbol.recorrerArbol1();
-        
+
         for (int i = 0; i < palabras.size(); i++) {
             pw.println(palabras.get(i).toString());
         }

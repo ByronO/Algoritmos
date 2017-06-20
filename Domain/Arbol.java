@@ -89,7 +89,7 @@ public class Arbol {
         return this.palabras;
 
     }
-    
+        
     public Nodo getRaiz() {
         return raiz;
     }
