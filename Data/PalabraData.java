@@ -98,9 +98,9 @@ public class PalabraData {
         for (int i = 0; i < palabras.size(); i++) {
             for (int j = 0; j < palabras.get(i).getPosiciones().size(); j++) {
                 posiciones += palabras.get(i).getPosiciones().get(j);
-                if (j != palabras.get(j).getPosiciones().size() - 2) {
-                    posiciones += ",";
-                }
+
+                posiciones += ",";
+
             }
             String sub = posiciones.substring(0, posiciones.length() - 1);
             pw.println(palabras.get(i).getPalabra() + "-" + sub);
@@ -115,7 +115,6 @@ public class PalabraData {
 
     public String leerArbol(String path) {
         ArrayList<Palabra> palabrasDelArbol = new ArrayList<>();
-        ArrayList<Integer> posiciones = new ArrayList<>();
 
         FileReader fr = null;
         try {
@@ -132,42 +131,34 @@ public class PalabraData {
                 String[] b = a[1].split(",");
 
                 for (int i = 0; i < 1; i++) {
-                                    posiciones.removeAll(posiciones);
+                    ArrayList<Integer> posiciones = new ArrayList<>();
 
                     for (int j = 0; j < b.length; j++) {
                         posiciones.add(Integer.parseInt(b[j]));
                     }
-//                    System.out.println(posiciones.size());
                     palabra = new Palabra(a[0], posiciones);
 
                     palabrasDelArbol.add(palabra);
-
                 }
 
-            }
-
-            for (int j = 0; j < palabrasDelArbol.size(); j++) {
-                System.out.println(palabrasDelArbol.get(j).getPosiciones().toString());
             }
 
             String texto = "";
 
             int cont = 0;
-            for (int i = 0; i < palabrasDelArbol.size(); i++) {
-                for (int j = 0; j < palabrasDelArbol.get(i).getPosiciones().size(); j++) {
-//                    System.out.println(palabrasDelArbol.get(i).getPosiciones().get(j));
+            int a = 0;
+            while (a < palabrasDelArbol.size()) {
+                for (int i = 0; i < palabrasDelArbol.size(); i++) {
+                    for (int j = 0; j < palabrasDelArbol.get(i).getPosiciones().size(); j++) {
+                        if (palabrasDelArbol.get(i).getPosiciones().get(j) == cont) {
+                            texto += palabrasDelArbol.get(i).getPalabra() + " ";
+                            cont++;
+                        }
 
-                    if (palabrasDelArbol.get(i).getPosiciones().get(j).compareTo(cont) == 0) {
-                        System.out.println("saa");
-
-                        texto += palabrasDelArbol.get(i).getPalabra() + " ";
-                        cont++;
-//                        System.out.println(cont);
                     }
-
                 }
+                a++;
             }
-
             System.out.println(texto);
             fr.close();
 
