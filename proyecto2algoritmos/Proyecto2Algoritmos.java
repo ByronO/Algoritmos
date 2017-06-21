@@ -13,12 +13,9 @@ public class Proyecto2Algoritmos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
-            VentanaPrincipal a= new VentanaPrincipal();
-            a.setVisible(true);
-            // TODO code application logic here
-            
-        
+
+        VentanaPrincipal a = new VentanaPrincipal();
+        a.setVisible(true);
     }
 
 }
