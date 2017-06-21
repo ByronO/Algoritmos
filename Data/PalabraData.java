@@ -25,15 +25,15 @@ import java.util.logging.Logger;
  */
 public class PalabraData {
 
-    private String path;
+    private String pathTexto, pathArbol;
     private ArrayList<Palabra> todasLasPalabras = new ArrayList<Palabra>();
     private Arbol arbol = new Arbol();
 
     public void leerTexto(String path) throws FileNotFoundException {
-        this.path = path;
+        this.pathTexto = path;
 
         try {
-            File archivo = new File(this.path);
+            File archivo = new File(this.pathTexto);
             FileReader fr = new FileReader(archivo);
             BufferedReader br = new BufferedReader(fr);
 
@@ -94,9 +94,89 @@ public class PalabraData {
 
         ArrayList<Palabra> palabras = arbol.recorrerArbol1();
 
+        String posiciones = "";
         for (int i = 0; i < palabras.size(); i++) {
-            pw.println(palabras.get(i).toString());
+            for (int j = 0; j < palabras.get(i).getPosiciones().size(); j++) {
+                posiciones += palabras.get(i).getPosiciones().get(j);
+                if (j != palabras.get(j).getPosiciones().size() - 2) {
+                    posiciones += ",";
+                }
+            }
+            String sub = posiciones.substring(0, posiciones.length() - 1);
+            pw.println(palabras.get(i).getPalabra() + "-" + sub);
+            posiciones = "";
         }
+
+//        for (int i = 0; i < palabras.size(); i++) {
+//            
+//        }
         pw.close();
+    }
+
+    public String leerArbol(String path) {
+        ArrayList<Palabra> palabrasDelArbol = new ArrayList<>();
+        ArrayList<Integer> posiciones = new ArrayList<>();
+
+        FileReader fr = null;
+        try {
+            this.pathArbol = path;
+            File archivo = new File(this.pathArbol);
+            fr = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr);
+
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                Palabra palabra;
+                String[] a = linea.split("-");
+                String[] b = a[1].split(",");
+
+                for (int i = 0; i < 1; i++) {
+                                    posiciones.removeAll(posiciones);
+
+                    for (int j = 0; j < b.length; j++) {
+                        posiciones.add(Integer.parseInt(b[j]));
+                    }
+//                    System.out.println(posiciones.size());
+                    palabra = new Palabra(a[0], posiciones);
+
+                    palabrasDelArbol.add(palabra);
+
+                }
+
+            }
+
+            for (int j = 0; j < palabrasDelArbol.size(); j++) {
+                System.out.println(palabrasDelArbol.get(j).getPosiciones().toString());
+            }
+
+            String texto = "";
+
+            int cont = 0;
+            for (int i = 0; i < palabrasDelArbol.size(); i++) {
+                for (int j = 0; j < palabrasDelArbol.get(i).getPosiciones().size(); j++) {
+//                    System.out.println(palabrasDelArbol.get(i).getPosiciones().get(j));
+
+                    if (palabrasDelArbol.get(i).getPosiciones().get(j).compareTo(cont) == 0) {
+                        System.out.println("saa");
+
+                        texto += palabrasDelArbol.get(i).getPalabra() + " ";
+                        cont++;
+//                        System.out.println(cont);
+                    }
+
+                }
+            }
+
+            System.out.println(texto);
+            fr.close();
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PalabraData.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+
+        }
+
+        return null;
     }
 }

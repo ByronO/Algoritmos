@@ -31,6 +31,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     private JMenuItem jmiDeTextoAArbol, jmiDeArbolATexto, jmiArchivo;
     private JFileChooser fileChooser;
     
+    private PalabraData palabraData = new PalabraData();
+
     private String path;
 
     public VentanaPrincipal() {
@@ -93,14 +95,14 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         if (e.getSource() == this.jmiDeArbolATexto) {
             Grafico g = new Grafico();
             g.setVisible(true);
+            palabraData.leerArbol(this.path);
         }
         if (e.getSource() == this.jmiDeTextoAArbol) {
             try {
                 Grafico g = new Grafico();
                 g.setVisible(true);
-                PalabraData palabraData = new PalabraData();
-                palabraData.leerTexto(this.path);
-                palabraData.guardarArbol();
+                this.palabraData.leerTexto(this.path);
+                this.palabraData.guardarArbol();
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }

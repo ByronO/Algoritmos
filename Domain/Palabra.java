@@ -26,6 +26,13 @@ public class Palabra {
     public Palabra(String palabra) {
         this.palabra = palabra;
     }
+
+    public Palabra(String palabra, ArrayList<Integer> posiciones) {
+        this.palabra = palabra;
+        this.posiciones = posiciones;
+    }
+    
+    
     
     public String getPalabra() {
         return palabra;
