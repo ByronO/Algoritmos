@@ -5,6 +5,8 @@
  */
 package Domain;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author byron
@@ -51,5 +53,9 @@ public class Nodo {
 
     public void setDer(Nodo der) {
         this.der = der;
+    }
+    public void draw(Graphics g,int x,int y){
+        g.drawOval(x,y,70, 50);
+        g.drawString(this.palabra.getPalabra(), x, y+30);
     }
 }

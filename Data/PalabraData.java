@@ -6,10 +6,8 @@
 package Data;
 
 import Domain.Arbol;
-import Domain.Nodo;
 import Domain.Palabra;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -79,12 +77,19 @@ public class PalabraData {
             for (int i = 0; i < palabras.size(); i++) {
                 arbol.agregar(palabras.get(i));
             }
-            arbol.printTree1();
             fr.close();
         } catch (IOException ex) {
             Logger.getLogger(PalabraData.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    public Arbol getArbol() {
+        return arbol;
+    }
+
+    public void setArbol(Arbol arbol) {
+        this.arbol = arbol;
     }
 
     public void guardarArbol() throws FileNotFoundException {
@@ -103,19 +108,16 @@ public class PalabraData {
 
             }
             String sub = posiciones.substring(0, posiciones.length() - 1);
-            pw.println(palabras.get(i).getPalabra() + "-" + sub);
+            pw.println(palabras.get(i).getPalabra() + " " + sub);
             posiciones = "";
         }
 
-//        for (int i = 0; i < palabras.size(); i++) {
-//            
-//        }
         pw.close();
     }
 
     public String leerArbol(String path) {
         ArrayList<Palabra> palabrasDelArbol = new ArrayList<>();
-
+        String texto = "";
         FileReader fr = null;
         try {
             this.pathArbol = path;
@@ -127,7 +129,7 @@ public class PalabraData {
 
             while ((linea = br.readLine()) != null) {
                 Palabra palabra;
-                String[] a = linea.split("-");
+                String[] a = linea.split(" ");
                 String[] b = a[1].split(",");
 
                 for (int i = 0; i < 1; i++) {
@@ -143,8 +145,6 @@ public class PalabraData {
 
             }
 
-            String texto = "";
-
             int cont = 0;
             int a = 0;
             while (a < palabrasDelArbol.size()) {
@@ -159,7 +159,6 @@ public class PalabraData {
                 }
                 a++;
             }
-            System.out.println(texto);
             fr.close();
 
         } catch (FileNotFoundException ex) {
@@ -167,7 +166,6 @@ public class PalabraData {
         } catch (IOException ex) {
 
         }
-
-        return null;
+        return texto;
     }
 }
