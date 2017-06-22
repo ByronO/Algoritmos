@@ -125,7 +125,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
             Grafico g = new Grafico(palabraDataArbol.leerArbol(this.pathArbol));
             g.setVisible(true);
-            palabraData.leerArbol(this.pathArbol);
 
         }
         if (e.getSource() == this.jmiDeTextoAArbol) {

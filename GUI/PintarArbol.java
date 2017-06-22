@@ -28,7 +28,6 @@ public class PintarArbol extends JPanel {
         this.g2 = (Graphics2D) g;
         pintarArbol(this.arbol.getRaiz(), x, y);
         pintarArbol1(this.arbol.getRaiz(), x, y);
-        pintarArbol2(this.arbol.getRaiz(), x, y);
 
     }
 
@@ -42,19 +41,16 @@ public class PintarArbol extends JPanel {
 
     private void pintarArbol1(Nodo temp, int x, int y) {
         if (temp.getIzq() != null) {
-            temp.draw2(g2, x, y);
+            temp.drawIzquierda(g2, x, y);
             pintarArbol1(temp.getIzq(), x - 100, y + 100);
 
         }
-    }
-
-    private void pintarArbol2(Nodo temp, int x, int y) {
-        if (temp.getDer() != null) {
-            temp.draw3(g2, x, y);
+         if (temp.getDer() != null) {
+            temp.drawDerecha(g2, x, y);
 
             pintarArbol1(temp.getDer(), x + 100, y + 100);
-
-        }
+         }
     }
 
+    
 }//class

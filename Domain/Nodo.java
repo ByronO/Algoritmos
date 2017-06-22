@@ -5,6 +5,7 @@
  */
 package Domain;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -60,23 +61,24 @@ public class Nodo {
         this.g2 = (Graphics2D) g;
         String a = this.palabra.getPalabra();
         a += this.palabra.getPosiciones();
-
-        g2.drawOval(x, y, 100, 50);
+        g2.setColor(Color.green);
+        g2.fillOval(x, y, 100, 50);
+        g2.setColor(Color.BLACK);
         g2.drawString(a, x + 15, y + 30);
 //        g2.drawLine(x+80, y+50, x+140, y+70);
     }
 
-    public void draw2(Graphics g, int x, int y) {
+    public void drawIzquierda(Graphics g, int x, int y) {
         this.g2 = (Graphics2D) g;
-
-        g2.drawLine(x+50, y+50 , x-50 , y+100 );
+        g2.setColor(Color.black);
+        g2.drawLine(x + 50, y + 50, x - 50, y + 100);
 
     }
-    
-     public void draw3(Graphics g, int x, int y) {
-        this.g2 = (Graphics2D) g;
 
-        g2.drawLine(x+50, y+50 , x+150 , y+100 );
+    public void drawDerecha(Graphics g, int x, int y) {
+        this.g2 = (Graphics2D) g;
+        g2.setColor(Color.black);
+        g2.drawLine(x + 50, y + 50, x + 150, y + 100);
 
     }
 }

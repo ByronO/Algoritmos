@@ -47,18 +47,15 @@ public class Arbol {
                 previous.setDer(nuevo);
             }
         }
-
     }
 
     public void printTree1() {
         Nodo temp = this.raiz;
-
         printTree(temp);
     }
 
     public void printTree(Nodo temp) {
         if (temp != null) {
-//            System.out.println(temp.getPalabra().toString());
             printTree(temp.getIzq());
             printTree(temp.getDer());
         }
