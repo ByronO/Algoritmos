@@ -27,9 +27,12 @@ import javax.swing.JOptionPane;
 public class VentanaPrincipal extends JFrame implements ActionListener {
 
 
+    private JMenuBar jMenuBar;
     private JMenu jMenuTexto, jMenuArbol;
     private JMenuItem jmiDeTextoAArbol, jmiDeArbolATexto, jmiArchivoTexto, jmiArchivoArbol;
     private JFileChooser fileChooserTexto, fileChooserArbol;
+    
+    private PalabraData palabraData;
 
     private String pathTexto, pathArbol;
 
@@ -118,7 +121,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         if (e.getSource() == this.jmiDeArbolATexto) {
             Grafico g = new Grafico();
             g.setVisible(true);
-            palabraData.leerArbol(this.path);
+            palabraData.leerArbol(this.pathArbol);
         }
         if (e.getSource() == this.jmiDeTextoAArbol) {
             try {
