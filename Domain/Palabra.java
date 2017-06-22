@@ -59,9 +59,9 @@ public class Palabra {
         this.posiciones = posiciones;
     }
 
-    @Override
-    public String toString() {
-        return palabra  +"-"+ posiciones ;
-    }
+//    @Override
+//    public String toString() {
+//        return palabra  +"-"+ posiciones ;
+//    }
     
 }

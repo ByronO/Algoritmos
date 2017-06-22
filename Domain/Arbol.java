@@ -68,10 +68,6 @@ public class Arbol {
         Nodo temp = this.raiz;
         recorrerArbol(temp);
        
-        for (int i = 0; i < palabras.size(); i++) {
-            System.out.println(palabras.get(i).toString());
-
-        }
         return palabras;
     }
 
