@@ -17,6 +17,7 @@ public class Nodo {
 
     private Palabra palabra;
     private Nodo izq, der;
+    private int height;
 
     private Graphics2D g2;
 
@@ -24,6 +25,7 @@ public class Nodo {
         this.palabra = palabra;
         this.izq = izq;
         this.der = der;
+        this.height = 0;
     }
 
     public Nodo(Palabra palabra) {
@@ -57,6 +59,15 @@ public class Nodo {
         this.der = der;
     }
 
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+    
+    
     public void draw(Graphics g, int x, int y) {
         this.g2 = (Graphics2D) g;
         String a = this.palabra.getPalabra();
