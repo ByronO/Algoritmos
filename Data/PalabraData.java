@@ -6,6 +6,7 @@
 package Data;
 
 import Domain.Arbol;
+import Domain.Nodo;
 import Domain.Palabra;
 import java.io.BufferedReader;
 import java.io.File;
@@ -170,4 +171,6 @@ public class PalabraData {
         }
         return texto;
     }
+    
+    
 }

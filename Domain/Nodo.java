@@ -33,6 +33,12 @@ public class Nodo {
     public Nodo() {
     }
 
+    @Override
+    public String toString() {
+        return "Nodo{" + "palabra=" + palabra + '}';
+    }
+
+
     public Palabra getPalabra() {
         return palabra;
     }
