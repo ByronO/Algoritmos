@@ -15,9 +15,11 @@ public class Arbol {
 
     private Nodo raiz;
     private ArrayList<Palabra> palabras = new ArrayList<>();
+    private int position;
 
     public Arbol() {
         this.raiz = null;
+        this.position = 0;
     }
 
     public void agregar(Palabra palabra) {
@@ -26,32 +28,36 @@ public class Arbol {
     }
 
 //    public Nodo insertar(Nodo nuevo, Nodo temp) {
-//        Nodo previous;
+//        Nodo aux = temp;
 //        if (this.raiz == null) {
 //            raiz = nuevo;
 //        } else if (nuevo.getPalabra().getAscii() < temp.getPalabra().getAscii()) {
-//            temp.setIzq(insertar(nuevo, temp.getIzq()));
-//            if (height(temp.getIzq()) - height(temp.getDer()) == 2) {
-//                if (nuevo.getPalabra().getAscii() < temp.getIzq().getPalabra().getAscii()) {
-//                    temp = rotateWithLeftChild(temp); /* Caso 1 */
+//            temp.izq = insertar(nuevo, temp.izq);
+//            if (height(temp.izq) - height(temp.der) == 2) {
+//                if (nuevo.getPalabra().getAscii() < temp.izq.getPalabra().getAscii()) {
+//                    aux = rotateWithLeftChild(temp);
 //                } else {
-//                    temp = doubleWithLeftChild(temp); /* Caso 2 */
+//                    aux = doubleWithLeftChild(temp); 
 //                }
 //            }
 //        } else if (nuevo.getPalabra().getAscii() > temp.getPalabra().getAscii()) {
-//            temp.setDer(insertar(nuevo, temp.getDer()));
-//            if (height(temp.getDer()) - height(temp.getIzq()) == 2) {
-//                if (nuevo.getPalabra().getAscii() < temp.getDer().getPalabra().getAscii()) {
-//                    temp = rotateWithRightChild(temp); /* Caso 4 */
+//            temp.der = insertar(nuevo, temp.der);
+//            if (height(temp.der) - height(temp.izq) == 2) {
+//                if (nuevo.getPalabra().getAscii() < temp.der.getPalabra().getAscii()) {
+//                    aux = rotateWithRightChild(temp); 
 //                } else {
-//                    temp = doubleWithRightChild(temp); /* Caso 3 */
+//                    aux = doubleWithRightChild(temp); 
 //                }
 //            }
 //        } 
-//        temp.setHeight(max(height( temp.getIzq() ), height( temp.getDer() ) ) + 1);
+//        if(temp.izq.height > temp.der.height){
+//            temp.height = temp.izq.height +1;
+//        }else
+//
+//        temp.height = Math.max(height(temp.izq), height(temp.der)) + 1;
 //        return temp;
 //    }
-
+    
     public void insertar(Nodo nuevo, Nodo temp) {
         Nodo previous;
         if (this.raiz == null) {
@@ -79,37 +85,34 @@ public class Arbol {
 
         }
     }
-    
-    
-    private static int max(int lhs, int rhs) {
-        return lhs > rhs ? lhs : rhs;
-    }
-
+//    private static int max(int lhs, int rhs) {
+//        return lhs > rhs ? lhs : rhs;
+//    }
     private static Nodo rotateWithLeftChild(Nodo k2) {
-        Nodo k1 = k2.getIzq();
-        k2.setIzq(k1.getDer());
-        k1.setDer(k2);
-        k2.setHeight(max(height(k2.getIzq()), height(k2.getDer())) + 1);
-        k1.setHeight(max(height(k1.getIzq()), k2.getHeight()) + 1);
+        Nodo k1 = k2.izq;
+        k2.izq = k1.der;
+        k1.der = k2;
+        k2.height = Math.max(height(k2.izq), height(k2.der)) + 1;
+        k1.height = Math.max(height(k1.izq), k2.height) + 1;
         return k1;
     }
 
     private static Nodo rotateWithRightChild(Nodo k1) {
-        Nodo k2 = k1.getDer();
-        k1.setDer(k2.getIzq());
-        k2.setIzq(k1);
-        k1.setHeight(max(height(k1.getIzq()), height(k1.getDer())) + 1);
-        k2.setHeight(max(height(k2.getDer()), k1.getHeight()) + 1);
+        Nodo k2 = k1.der;
+        k1.der = k2.izq;
+        k2.izq = k1;
+        k1.height = Math.max(height(k1.izq), height(k1.der)) + 1;
+        k2.height = Math.max(height(k2.der), k1.height) + 1;
         return k2;
     }
 
     private static Nodo doubleWithLeftChild(Nodo k3) {
-        k3.setIzq(rotateWithRightChild(k3.getIzq()));
+        k3.izq = rotateWithRightChild(k3.izq);
         return rotateWithLeftChild(k3);
     }
 
     private static Nodo doubleWithRightChild(Nodo k1) {
-        k1.setDer(rotateWithLeftChild(k1.getDer()));
+        k1.der = rotateWithLeftChild(k1.der);
         return rotateWithRightChild(k1);
     }
 
