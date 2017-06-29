@@ -109,60 +109,60 @@ public class PalabraData {
 
             }
             String sub = posiciones.substring(0, posiciones.length() - 1);
-            switch (palabras.get(i).getPalabra()) {
-                case "que":
-                    palabras.get(i).setPalabra("!");
-                    break;
-                case "para":
-                    palabras.get(i).setPalabra("'");
-                    break;
-                case "pero":
-                    palabras.get(i).setPalabra("#");
-                    break;
-                case "por":
-                    palabras.get(i).setPalabra("$");
-                    break;
-                case "como":
-                    palabras.get(i).setPalabra("%");
-                    break;
-                case "del":
-                    palabras.get(i).setPalabra("&");
-                    break;
-                case "los":
-                    palabras.get(i).setPalabra("(");
-                    break;
-                case "las":
-                    palabras.get(i).setPalabra(")");
-                    break;
-                case "la":
-                    palabras.get(i).setPalabra("*");
-                    break;
-                case "el":
-                    palabras.get(i).setPalabra("+");
-                    break;
-                case "cuando":
-                    palabras.get(i).setPalabra("/");
-                    break;
-                case "de":
-                    palabras.get(i).setPalabra("^");
-                    break;
-                case "porque":
-                    palabras.get(i).setPalabra("{");
-                    break;
-                case "porqué":
-                    palabras.get(i).setPalabra("}");
-                    break;
-                case "además":
-                    palabras.get(i).setPalabra("[");
-                    break;
-                case "también":
-                    palabras.get(i).setPalabra("]");
-                    break;
-                case "más":
-                    palabras.get(i).setPalabra("-");
-                    break;
-
-            }
+//            switch (palabras.get(i).getPalabra()) {
+//                case "que":
+//                    palabras.get(i).setPalabra("!");
+//                    break;
+//                case "para":
+//                    palabras.get(i).setPalabra("'");
+//                    break;
+//                case "pero":
+//                    palabras.get(i).setPalabra("#");
+//                    break;
+//                case "por":
+//                    palabras.get(i).setPalabra("$");
+//                    break;
+//                case "como":
+//                    palabras.get(i).setPalabra("%");
+//                    break;
+//                case "del":
+//                    palabras.get(i).setPalabra("&");
+//                    break;
+//                case "los":
+//                    palabras.get(i).setPalabra("(");
+//                    break;
+//                case "las":
+//                    palabras.get(i).setPalabra(")");
+//                    break;
+//                case "la":
+//                    palabras.get(i).setPalabra("*");
+//                    break;
+//                case "el":
+//                    palabras.get(i).setPalabra("+");
+//                    break;
+//                case "cuando":
+//                    palabras.get(i).setPalabra("/");
+//                    break;
+//                case "de":
+//                    palabras.get(i).setPalabra("^");
+//                    break;
+//                case "porque":
+//                    palabras.get(i).setPalabra("{");
+//                    break;
+//                case "porqué":
+//                    palabras.get(i).setPalabra("}");
+//                    break;
+//                case "además":
+//                    palabras.get(i).setPalabra("[");
+//                    break;
+//                case "también":
+//                    palabras.get(i).setPalabra("]");
+//                    break;
+//                case "más":
+//                    palabras.get(i).setPalabra("-");
+//                    break;
+//
+//            }
             pw.println(palabras.get(i).getPalabra() + " " + sub);
             posiciones = "";
         }
@@ -193,60 +193,60 @@ public class PalabraData {
                     for (int j = 0; j < b.length; j++) {
                         posiciones.add(Integer.parseInt(b[j]));
                     }
-                    switch (a[0]) {
-                        case "!":
-                            a[0] = "que";
-                            break;
-                        case "'":
-                            a[0] = "para";
-                            break;
-                        case "#":
-                            a[0] = "pero";
-                            break;
-                        case "$":
-                            a[0] = "por";
-                            break;
-                        case "%":
-                            a[0] = "como";
-                            break;
-                        case "&":
-                            a[0] = "del";
-                            break;
-                        case "(":
-                            a[0] = "los";
-                            break;
-                        case ")":
-                            a[0] = "las";
-                            break;
-                        case "*":
-                            a[0] = "la";
-                            break;
-                        case "+":
-                            a[0] = "el";
-                            break;
-                        case "/":
-                            a[0] = "cuando";
-                            break;
-                        case "^":
-                            a[0] = "de";
-                            break;
-                        case "{":
-                            a[0] = "porque";
-                            break;
-                        case "}":
-                            a[0] = "porqué";
-                            break;
-                        case "[":
-                            a[0] = "además";
-                            break;
-                        case "]":
-                            a[0] = "también";
-                            break;
-                        case "-":
-                            a[0] = "más";
-                            break;
-
-                    }
+//                    switch (a[0]) {
+//                        case "!":
+//                            a[0] = "que";
+//                            break;
+//                        case "'":
+//                            a[0] = "para";
+//                            break;
+//                        case "#":
+//                            a[0] = "pero";
+//                            break;
+//                        case "$":
+//                            a[0] = "por";
+//                            break;
+//                        case "%":
+//                            a[0] = "como";
+//                            break;
+//                        case "&":
+//                            a[0] = "del";
+//                            break;
+//                        case "(":
+//                            a[0] = "los";
+//                            break;
+//                        case ")":
+//                            a[0] = "las";
+//                            break;
+//                        case "*":
+//                            a[0] = "la";
+//                            break;
+//                        case "+":
+//                            a[0] = "el";
+//                            break;
+//                        case "/":
+//                            a[0] = "cuando";
+//                            break;
+//                        case "^":
+//                            a[0] = "de";
+//                            break;
+//                        case "{":
+//                            a[0] = "porque";
+//                            break;
+//                        case "}":
+//                            a[0] = "porqué";
+//                            break;
+//                        case "[":
+//                            a[0] = "además";
+//                            break;
+//                        case "]":
+//                            a[0] = "también";
+//                            break;
+//                        case "-":
+//                            a[0] = "más";
+//                            break;
+//
+//                    }
                     palabra = new Palabra(a[0], posiciones);
 
                     palabrasDelArbol.add(palabra);
