@@ -46,7 +46,7 @@ public class Arbol {
 //                if (nuevo.getPalabra().getAscii() < temp.der.getPalabra().getAscii()) {
 //                    aux = rotateWithRightChild(temp); 
 //                } else {
-//                    aux = doubleWithRightChild(temp); 
+//                    aux = doubleWithRightChild(temp);     
 //                }
 //            }
 //        } 
