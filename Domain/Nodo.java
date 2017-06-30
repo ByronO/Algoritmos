@@ -15,15 +15,20 @@ import java.awt.Graphics2D;
  */
 public class Nodo {
 
+    int balanceFactor;
+    private String quantityPositions;
     private Palabra palabra;
-    private Nodo izq, der;
+    public Nodo izq, der;
+    public int height;
 
     private Graphics2D g2;
 
     public Nodo(Palabra palabra, Nodo izq, Nodo der) {
         this.palabra = palabra;
-        this.izq = izq;
-        this.der = der;
+        this.izq = null;
+        this.der = null;
+        this.height = 0;
+        quantityPositions = "";
     }
 
     public Nodo(Palabra palabra) {
@@ -33,11 +38,13 @@ public class Nodo {
     public Nodo() {
     }
 
+
     @Override
     public String toString() {
         return "Nodo{" + "palabra=" + palabra + '}';
     }
 
+    
 
     public Palabra getPalabra() {
         return palabra;
@@ -61,6 +68,14 @@ public class Nodo {
 
     public void setDer(Nodo der) {
         this.der = der;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public void draw(Graphics g, int x, int y) {
