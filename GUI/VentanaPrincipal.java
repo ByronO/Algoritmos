@@ -148,9 +148,13 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         }
         if (e.getSource() == this.jmiBuscarEnElArbor) {
             String a = JOptionPane.showInputDialog("Escriba la palabra a buscar."); //actionPerformed
-            Nodo t= this.arbolGenera.recorrerArbol2(a);
-           JOptionPane.showMessageDialog(rootPane, "Palabra: "+ t.getPalabra().getPalabra()+" "+t.getPalabra().getPosiciones());
-        }
+            Nodo t = this.arbolGenera.recorrerArbol2(a);
+            if (t == null) {
+                JOptionPane.showMessageDialog(rootPane, "La palabra no existe");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Palabra: " + t.getPalabra().getPalabra() + " " + t.getPalabra().getPosiciones());
+            }
 
+        }
     }
 }

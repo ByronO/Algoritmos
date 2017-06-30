@@ -29,7 +29,7 @@ public class Fondo extends JPanel {
             this.setBounds(0, 0, 900, 800);
             this.setVisible(true);
 
-            this.imagen = ImageIO.read(getClass().getResourceAsStream("/Assets/a.jpg"));
+            this.imagen = ImageIO.read(getClass().getResourceAsStream("/Assets/captura.png"));
         } catch (IOException ex) {
             Logger.getLogger(Fondo.class.getName()).log(Level.SEVERE, null, ex);
         }
