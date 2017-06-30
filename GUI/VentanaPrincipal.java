@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import Domain.Arbol;
+import Domain.Nodo;
 import Data.PalabraData;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,17 +28,17 @@ import javax.swing.JOptionPane;
  */
 public class VentanaPrincipal extends JFrame implements ActionListener {
 
-
     private JMenuBar jMenuBar;
     private JMenu jMenuTexto, jMenuArbol;
-    private JMenuItem jmiDeTextoAArbol, jmiDeArbolATexto, jmiArchivoTexto, jmiArchivoArbol;
+    private JMenuItem jmiDeTextoAArbol, jmiDeArbolATexto, jmiArchivoTexto, jmiArchivoArbol, jmiBuscarEnElArbor;
     private JFileChooser fileChooserTexto, fileChooserArbol;
-    
+
     private PalabraData palabraData;
 
     private String pathTexto, pathArbol;
 
     private PalabraData palabraDataTexto, palabraDataArbol;
+    private Arbol arbolGenera;
 
     public VentanaPrincipal() {
         super();
@@ -45,13 +47,14 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         this.jMenuArbol = new JMenu("Arbol");
         this.jmiDeTextoAArbol = new JMenuItem("Pasar texto a árbol");
         this.jmiDeArbolATexto = new JMenuItem("Pasar árbol a texto");
+        this.jmiBuscarEnElArbor = new JMenuItem("Buscar palabra en el arbol");
         this.jmiArchivoTexto = new JMenuItem("Buscar archivo");
         this.jmiArchivoArbol = new JMenuItem("Buscar archivo");
 
         this.setJMenuBar(this.jMenuBar);
         this.add(new Fondo());
         this.setResizable(false);
-
+        this.arbolGenera = new Arbol();
         init();
 
     }//Constructor
@@ -67,18 +70,21 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         this.jMenuTexto.add(this.jmiDeTextoAArbol);
 
         this.jMenuArbol.add(this.jmiArchivoArbol);
+        this.jMenuTexto.add(this.jmiBuscarEnElArbor);
         this.jMenuArbol.add(this.jmiDeArbolATexto);
 
         this.jmiArchivoArbol.addActionListener(this);
         this.jmiDeArbolATexto.addActionListener(this);
 
         this.jmiArchivoTexto.addActionListener(this);
+        this.jmiBuscarEnElArbor.addActionListener(this);
         this.jmiDeTextoAArbol.addActionListener(this);
 
         this.setJMenuBar(this.jMenuBar);
 
         this.jmiDeTextoAArbol.setVisible(false);
         this.jmiDeArbolATexto.setVisible(false);
+        this.jmiBuscarEnElArbor.setVisible(false);
 
     }//init
 
@@ -125,14 +131,14 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
             Grafico g = new Grafico(palabraDataArbol.leerArbol(this.pathArbol));
             g.setVisible(true);
-
         }
         if (e.getSource() == this.jmiDeTextoAArbol) {
             try {
-
+                this.jmiBuscarEnElArbor.setVisible(true);
                 PalabraData palabraData = new PalabraData();
                 palabraData.leerTexto(this.pathTexto);
                 palabraData.guardarArbol();
+                this.arbolGenera = palabraData.getArbol();
                 Grafico g = new Grafico(palabraData.getArbol());
                 g.setVisible(true);
 
@@ -140,6 +146,11 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//actionPerformed
+        if (e.getSource() == this.jmiBuscarEnElArbor) {
+            String a = JOptionPane.showInputDialog("Escriba la palabra a buscar."); //actionPerformed
+            Nodo t= this.arbolGenera.recorrerArbol2(a);
+           JOptionPane.showMessageDialog(rootPane, "Palabra: "+ t.getPalabra().getPalabra()+" "+t.getPalabra().getPosiciones());
+        }
 
+    }
 }

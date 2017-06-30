@@ -38,22 +38,12 @@ public class Nodo {
     public Nodo() {
     }
 
-    public int getBalanceFactor() {
-        return balanceFactor;
+
+    @Override
+    public String toString() {
+        return "Nodo{" + "palabra=" + palabra + '}';
     }
 
-    public void setBalanceFactor(int balanceFactor) {
-        this.balanceFactor = balanceFactor;
-    }
-
-    public String getQuantityPositions() {
-        return quantityPositions;
-    }
-
-    public void setQuantityPositions(String quantityPositions) {
-        this.quantityPositions = quantityPositions;
-    }
-    
     
 
     public Palabra getPalabra() {

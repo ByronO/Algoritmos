@@ -5,6 +5,7 @@ import Domain.Nodo;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -14,12 +15,15 @@ public class PintarArbol extends JPanel {
 
     private Graphics2D g2;
     private Arbol arbol;
+    private JScrollPane jScrollPane;
 
     public PintarArbol(Arbol arbol) {
-        this.setBounds(0, 0, 900, 800);
+        this.setBounds(0, 0, 10000, 8000);
         this.setVisible(true);
         this.arbol = arbol;
-
+//        this.jScrollPane = new JScrollPane(this);
+////        this.jScrollPane.add(this);
+//        this.add(jScrollPane);
     }
 
     @Override
@@ -45,12 +49,11 @@ public class PintarArbol extends JPanel {
             pintarArbol1(temp.getIzq(), x - 100, y + 100);
 
         }
-         if (temp.getDer() != null) {
+        if (temp.getDer() != null) {
             temp.drawDerecha(g2, x, y);
 
             pintarArbol1(temp.getDer(), x + 100, y + 100);
-         }
+        }
     }
 
-    
 }//class

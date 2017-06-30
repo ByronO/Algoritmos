@@ -6,6 +6,7 @@
 package Domain;
 
 import java.util.ArrayList;
+import Domain.Nodo;
 
 /**
  *
@@ -15,7 +16,11 @@ public class Arbol {
 
     private Nodo raiz;
     private ArrayList<Palabra> palabras = new ArrayList<>();
+
+    private Nodo buscada;
+
     private int position;
+
 
     public Arbol() {
         this.raiz = null;
@@ -143,7 +148,6 @@ public class Arbol {
 
 //        ArrayList<Palabra> palabras = new ArrayList<Palabra>();
         if (temp != null) {
-//            System.out.println(temp.getPalabra().toString());
 
             palabras.add(temp.getPalabra());
             recorrerArbol(temp.getIzq());
@@ -153,6 +157,30 @@ public class Arbol {
         return this.palabras;
 
     }
+
+
+    public Nodo recorrerArbol2(String palabra) {
+        Nodo temp = this.raiz;
+//        this.buscada= new Nodo();
+        return recorrerArbol2(temp, palabra);
+    }
+
+    public Nodo recorrerArbol2(Nodo temp, String palabra) {
+
+        if (temp != null) {
+//            System.out.println(temp.getPalabra().toString() + " " + palabra);
+            if (temp.getPalabra().getPalabra().equals(palabra)) {
+                buscada = temp;
+//                System.out.println(temp.getPalabra().toString() + " " + palabra + " " + buscada.getPalabra().getPalabra());
+
+            }
+            recorrerArbol2(temp.getIzq(), palabra);
+            recorrerArbol2(temp.getDer(), palabra);
+
+        }
+        return buscada;
+    }
+
 
     public Nodo getRaiz() {
         return raiz;

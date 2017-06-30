@@ -8,6 +8,7 @@ package GUI;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import Domain.Arbol;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -26,9 +27,14 @@ public class Grafico extends JFrame {
     public Grafico(Arbol arbol) {
         super();
         this.dispose();
-        this.setSize(1300, 750);
+        this.setSize(1100, 750);
         this.setVisible(true);
-        this.add(new PintarArbol(arbol));
+        PintarArbol pintarArbol= new PintarArbol(arbol);
+        JScrollPane jScrollPane= new JScrollPane();
+        this.add(jScrollPane);
+        this.add(pintarArbol);
+//        this.add(jScrollPane);
+        
     }
 
     private void pintarTexto(String texto) {
